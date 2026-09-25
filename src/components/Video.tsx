@@ -19,7 +19,16 @@ export function Video() {
           <h2 className="text-[clamp(1.9rem,3.6vw,2.75rem)]">Uživo sa svadbe</h2>
           <p className="mt-4 max-w-lg text-mute">
             Neizmenjen snimak sa jedne od naših svadbi pod šatorom — saksofon i harmonika među
-            gostima, pa pesma i kolo. Uključite zvuk.
+            gostima, pa pesma i kolo. Bez montaže i studijskog zvuka: ovako orkestar zvuči uživo, i
+            ovako će zvučati na vašem veselju. Uključite zvuk.
+          </p>
+          <p className="mt-4 max-w-lg text-mute">
+            Veče obično počinjemo instrumentalnim uvodom na harmonici i saksofonu, dok se gosti
+            okupljaju. Zatim sledi splet kola, a kad se sala zagreje — narodne pesme koje svi znaju i
+            veselje koje traje dok ima ko da igra.
+          </p>
+          <p className="mt-4 max-w-lg text-mute">
+            Imate želju za posebnu pesmu ili kolo? Napišite je u upitu.
           </p>
           <p className="mt-8 font-semibold">Više snimaka</p>
           <ul className="mt-3 space-y-2">

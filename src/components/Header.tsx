@@ -4,6 +4,7 @@ import { PhoneIcon } from "./Icons";
 const nav = [
   { href: "#snimak", label: "Snimak" },
   { href: "#o-orkestru", label: "O orkestru" },
+  { href: "#proslave", label: "Proslave" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 
