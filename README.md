@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Orkestar Tradicija — demo sajt
 
-## Getting Started
-
-First, run the development server:
+Prezentacioni sajt za **Zoran Nedeljkov i Orkestar Tradicija** (Next.js 16, TypeScript, Tailwind CSS 4, Motion).
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # produkcijski build (Vercel-ready)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Struktura
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Deo | Fajl |
+| --- | --- |
+| Svi podaci (telefon, mreže, snimci) | `src/lib/site.ts` |
+| Sekcije stranice | `src/components/*` |
+| Upit za nastup (API) | `src/app/api/upit/route.ts` |
+| SEO: metadata, OpenGraph, JSON-LD | `src/app/layout.tsx`, `sitemap.ts`, `robots.ts` |
+| Fotografije i video | `public/media/` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Upit za nastup — slanje na email
 
-## Learn More
+Bez podešavanja forma radi, a upit se samo loguje na serveru. Za slanje na email (preko [Resend](https://resend.com)) dodati u Vercel → Environment Variables:
 
-To learn more about Next.js, take a look at the following resources:
+```
+RESEND_API_KEY=re_...
+INQUIRY_TO_EMAIL=adresa@orkestra.rs
+INQUIRY_FROM_EMAIL="Orkestar Tradicija <upit@verifikovan-domen.rs>"   # opciono
+NEXT_PUBLIC_SITE_URL=https://pravi-domen.rs
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Proveriti sa klijentom pre objave
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Domen (`NEXT_PUBLIC_SITE_URL`) i email adresa za upite — email nije javno dostupan.
+- „Srbija i region“ (izvedeno iz snimka „Svatovi u Tuzli“) i postava „harmonika, saksofon, klavijature“ (vidljivo na snimcima).
+- Lista vrsta proslava u formi (`eventTypes` u `site.ts`).
+- Svi snimci i fotografije su sa zvaničnih profila orkestra (Instagram, YouTube) — za finalnu verziju poželjno dobiti originalne fajlove u višoj rezoluciji.
+- Utisci klijenata: nisu pronađeni javno, pa sekcija nije pravljena. Lako se dodaje kad orkestar dostavi prave utiske.
