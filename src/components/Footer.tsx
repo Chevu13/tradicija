@@ -6,8 +6,8 @@ const icons = { Instagram: InstagramIcon, YouTube: YoutubeIcon, TikTok: TiktokIc
 
 export function Footer() {
   return (
-    <footer className="border-t border-paper/10 bg-ink pb-24 pt-10 md:pb-10">
-      <div className="mx-auto flex max-w-[90rem] flex-col gap-8 px-4 md:flex-row md:items-center md:justify-between md:px-8">
+    <footer className="border-t border-paper/10 bg-ink pb-28 pt-14 md:pb-14 md:pt-16">
+      <div className="mx-auto flex max-w-[90rem] flex-col gap-10 px-5 md:flex-row md:items-center md:justify-between md:px-8">
         <Logo />
         <a
           href={contact.phoneHref}
@@ -35,7 +35,7 @@ export function Footer() {
           })}
         </ul>
       </div>
-      <p className="mx-auto mt-8 max-w-[90rem] px-4 text-sm text-mute md:px-8">
+      <p className="mx-auto mt-12 max-w-[90rem] px-5 text-sm text-mute md:px-8">
         © {new Date().getFullYear()} Zoran Nedeljkov &amp; Orkestar Tradicija
       </p>
     </footer>

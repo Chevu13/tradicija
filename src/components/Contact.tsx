@@ -19,7 +19,7 @@ function validate(f: Fields) {
 }
 
 const input =
-  "mt-1.5 block h-14 w-full border-2 border-transparent bg-paper px-4 text-base text-ink placeholder:text-ink/40 focus:border-gold focus:outline-none aria-[invalid=true]:border-[#e0664f]";
+  "mt-2 block h-14 w-full border-2 border-transparent bg-paper px-4 text-base text-ink placeholder:text-ink/40 focus:border-gold focus:outline-none aria-[invalid=true]:border-[#e0664f]";
 
 function Field({
   id,
@@ -100,15 +100,15 @@ export function Contact() {
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ink via-ink/70 to-ink" />
 
-      <div className="mx-auto grid max-w-[90rem] gap-10 px-4 py-16 md:grid-cols-12 md:gap-12 md:px-8 md:py-28">
+      <div className="mx-auto grid max-w-[90rem] gap-14 px-5 py-20 md:grid-cols-12 md:gap-16 md:px-8 md:py-36">
         <div className="md:col-span-6">
           <h2 className="headline text-[clamp(2.9rem,6.5vw,6rem)]">
             Proverite da li je <span className="text-gold">vaš datum slobodan.</span>
           </h2>
-          <p className="mt-6 max-w-md text-lg leading-relaxed text-paper/80">
+          <p className="mt-8 max-w-md text-lg leading-[1.75] text-paper/80">
             Pošaljite datum i mesto — javljamo se sa informacijom o dostupnosti i ponudom.
           </p>
-          <a href={contact.phoneHref} className="group mt-8 inline-flex items-center gap-4">
+          <a href={contact.phoneHref} className="group mt-10 inline-flex items-center gap-5">
             <span className="grid h-14 w-14 place-items-center bg-gold text-ink">
               <PhoneIcon width={24} height={24} />
             </span>
@@ -147,7 +147,7 @@ export function Contact() {
               </button>
             </div>
           ) : (
-            <form noValidate onSubmit={onSubmit} aria-label="Provera datuma" className="grid gap-5 sm:grid-cols-2">
+            <form noValidate onSubmit={onSubmit} aria-label="Provera datuma" className="grid gap-x-5 gap-y-7 sm:grid-cols-2">
               <Field id="ime" label="Ime i prezime" error={errors.ime} className="sm:col-span-2">
                 <input id="ime" autoComplete="name" value={f.ime} onChange={(e) => set("ime")(e.target.value)} className={input} {...err("ime")} />
               </Field>
@@ -214,7 +214,7 @@ export function Contact() {
                   className={`${input} h-auto resize-none py-3`}
                 />
               </Field>
-              <div className="sm:col-span-2">
+              <div className="pt-2 sm:col-span-2">
                 <button type="submit" disabled={status === "sending"} className="btn btn-gold min-h-[3.75rem] w-full text-lg disabled:opacity-70">
                   {status === "sending" ? "Šaljemo…" : "Proveri datum"}
                 </button>
@@ -223,7 +223,7 @@ export function Contact() {
                     Slanje nije uspelo. Pozovite nas na {contact.phoneDisplay}.
                   </p>
                 )}
-                <p className="mt-3 text-sm text-paper/60">
+                <p className="mt-4 text-sm text-paper/60">
                   Upit ne predstavlja potvrdu rezervacije.
                 </p>
               </div>

@@ -76,13 +76,13 @@ export function LiveVideos() {
   const [main, second, third] = performances;
 
   return (
-    <section id="nastupi" className="bg-ink py-16 md:py-24">
-      <div className="mx-auto max-w-[90rem] px-4 md:px-8">
+    <section id="nastupi" className="bg-ink py-20 md:py-36">
+      <div className="mx-auto max-w-[90rem] px-5 md:px-8">
         <h2 className="headline max-w-4xl text-[clamp(2.9rem,7vw,6.5rem)]">
           Pogledajte kako zvuči <span className="text-gold">Tradicija.</span>
         </h2>
 
-        <div className="mt-10 grid gap-3 md:mt-14 md:grid-cols-12 md:grid-rows-2 md:gap-4">
+        <div className="mt-12 grid gap-5 md:mt-20 md:grid-cols-12 md:grid-rows-2 md:gap-6">
           <VideoTile
             item={main}
             onOpen={() => setActive(0)}
@@ -103,7 +103,7 @@ export function LiveVideos() {
           />
         </div>
 
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-6 sm:flex-row md:mt-16 sm:items-center sm:justify-between">
           <a
             href={socials.instagram.href}
             target="_blank"

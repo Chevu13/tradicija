@@ -64,11 +64,11 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
       <div className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-ink/60 via-transparent to-transparent md:block" />
 
-      <div className="mx-auto w-full max-w-[90rem] px-4 pb-[max(2.5rem,calc(env(safe-area-inset-bottom)+1.5rem))] md:px-8 md:pb-16">
+      <div className="mx-auto w-full max-w-[90rem] px-5 pb-[max(3.5rem,calc(env(safe-area-inset-bottom)+2.5rem))] md:px-8 md:pb-24">
         <p className="hero-in label text-gold-light" style={{ animationDelay: "0.05s" }}>
           Zoran Nedeljkov &amp; Orkestar Tradicija
         </p>
-        <h1 className="hero-in mt-3" style={{ animationDelay: "0.15s" }}>
+        <h1 className="hero-in mt-4 md:mt-6" style={{ animationDelay: "0.15s" }}>
           <span className="sr-only">Orkestar Tradicija — </span>
           <span className="headline block text-[clamp(4.1rem,11vw,10.5rem)] text-paper">
             Veselje
@@ -79,12 +79,12 @@ export function Hero() {
           </span>
         </h1>
         <p
-          className="hero-in mt-5 max-w-md text-[1.05rem] leading-snug text-paper/90 md:text-xl"
+          className="hero-in mt-6 max-w-md text-[1.05rem] leading-relaxed md:mt-8 text-paper/90 md:text-xl"
           style={{ animationDelay: "0.3s" }}
         >
           Muzika uživo za svadbe, rođendane i proslave širom Srbije i regiona.
         </p>
-        <div className="hero-in mt-7 grid gap-3 sm:flex" style={{ animationDelay: "0.4s" }}>
+        <div className="hero-in mt-9 grid gap-3 sm:flex sm:gap-4 md:mt-10" style={{ animationDelay: "0.4s" }}>
           <a href="#kontakt" className="btn btn-gold">
             Proveri datum
           </a>

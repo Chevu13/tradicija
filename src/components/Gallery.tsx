@@ -30,15 +30,15 @@ const shots: Shot[] = [
 
 export function Gallery() {
   return (
-    <section id="galerija" aria-label="Galerija" className="bg-ink pt-1">
-      <div className="grid auto-rows-[48vw] grid-cols-2 gap-1 md:auto-rows-[min(24vw,26rem)] md:grid-cols-3">
+    <section id="galerija" aria-label="Galerija" className="bg-ink pt-2 md:pt-3">
+      <div className="grid auto-rows-[48vw] grid-cols-2 gap-2 md:auto-rows-[min(24vw,26rem)] md:grid-cols-3 md:gap-3">
         {shots.map((s) => (
           <figure key={s.src} className={`relative overflow-hidden bg-ink-2 ${s.cls}`}>
             <Image src={s.src} alt={s.alt} fill sizes={s.sizes} className="object-cover" />
           </figure>
         ))}
       </div>
-      <div className="mx-auto flex max-w-[90rem] justify-center px-4 py-10 md:py-14">
+      <div className="mx-auto flex max-w-[90rem] justify-center px-5 py-16 md:py-24">
         <a
           href={socials.instagram.href}
           target="_blank"

@@ -45,13 +45,13 @@ export function Header() {
         solid || open ? "bg-ink/95 backdrop-blur" : "bg-gradient-to-b from-ink/70 to-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-[90rem] items-center justify-between px-4 md:h-20 md:px-8">
+      <div className="mx-auto flex h-16 max-w-[90rem] items-center justify-between px-5 md:h-20 md:px-8">
         <a href="#top" aria-label="Orkestar Tradicija — početak" onClick={() => setOpen(false)}>
           <Logo />
         </a>
 
         <nav aria-label="Glavna navigacija" className="hidden md:block">
-          <ul className="flex items-center gap-8">
+          <ul className="flex items-center gap-10">
             {nav.map((item) => (
               <li key={item.href}>
                 <a
@@ -95,7 +95,7 @@ export function Header() {
         id="mobilni-meni"
         aria-label="Mobilna navigacija"
         hidden={!open}
-        className="border-t border-paper/10 bg-ink px-4 pb-5 md:hidden"
+        className="border-t border-paper/10 bg-ink px-5 pb-6 md:hidden"
       >
         <ul>
           {nav.map((item) => (

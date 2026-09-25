@@ -3,20 +3,20 @@ import { Reveal } from "./Reveal";
 
 const events = [
   { title: "Svadbe", image: "/media/img/mladenci.jpg", alt: "Mladenci igraju u kolu pod šatorom" },
-  { title: "Rođendani i punoletstva", image: "/media/img/uvod.jpg", alt: "Harmonike na proslavi punoletstva" },
+  { title: "Rođendani i punoletstva", image: "/media/img/punoletstvo.jpg", alt: "Harmonike na proslavi punoletstva" },
   { title: "Porodična i privatna veselja", image: "/media/img/veselje.jpg", alt: "Gosti igraju uz orkestar" },
 ];
 
 export function Events() {
   return (
-    <section aria-labelledby="proslave-naslov" className="bg-paper pt-16 text-ink md:pt-24">
-      <div className="mx-auto max-w-[90rem] px-4 md:px-8">
+    <section aria-labelledby="proslave-naslov" className="bg-paper py-20 text-ink md:py-36">
+      <div className="mx-auto max-w-[90rem] px-5 md:px-8">
         <h2 id="proslave-naslov" className="headline text-[clamp(2.9rem,7vw,6.5rem)]">
           Za svako vaše veselje.
         </h2>
       </div>
 
-      <div className="mt-10 grid gap-1 bg-ink md:mt-14 md:grid-cols-3">
+      <div className="mx-auto mt-12 grid max-w-[90rem] gap-5 px-5 md:mt-20 md:grid-cols-3 md:gap-6 md:px-8">
         {events.map((e, i) => (
           <Reveal key={e.title} delay={i * 0.08}>
             <a href="#kontakt" className="group relative block aspect-[5/4] overflow-hidden bg-ink md:aspect-[3/4]">
