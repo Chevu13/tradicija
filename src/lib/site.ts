@@ -37,50 +37,10 @@ export const socials = {
   },
 } as const;
 
-export type Performance = {
-  slug: string;
-  title: string;
-  label: string;
-  poster: string;
-  video: string;
-  source: string;
-};
-
-/** Tri najjača isečka sa zvaničnog Instagram profila orkestra. */
-export const performances: Performance[] = [
-  {
-    slug: "svadba-sator",
-    title: "Svadba pod šatorom",
-    label: "Saksofon i harmonika među gostima",
-    poster: "/media/img/svadba-sator.jpg",
-    video: "/media/video/svadba-sator.mp4",
-    source: "https://www.instagram.com/reel/DdhW5_aNNp3/",
-  },
-  {
-    slug: "svatovi-tuzla",
-    title: "Svatovi u Tuzli",
-    label: "Kolo ispred kuće",
-    poster: "/media/img/svatovi-tuzla.jpg",
-    video: "/media/video/svatovi-tuzla.mp4",
-    source: "https://www.instagram.com/reel/DdZa2VTtW3G/",
-  },
-  {
-    slug: "kolo-sala",
-    title: "Puna sala u kolu",
-    label: "Svadba",
-    poster: "/media/img/kolo-sala.jpg",
-    video: "/media/video/kolo-sala.mp4",
-    source: "https://www.instagram.com/reel/DcRjpKmtgO9/",
-  },
-];
-
 /** Zvanični studijski spot sa YouTube-a. */
 export const featuredVideo = {
   youtubeId: "TTfJROKqb2c",
   title: "Splet kola",
-  subtitle: "Zoran Nedeljkov & Orkestar Tradicija",
-  duration: "11:22",
-  poster: "/media/img/zoran-portret.jpg",
 };
 
 export const eventTypes = [

@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useMemo, useState, type FormEvent } from "react";
-import { contact, eventTypes } from "@/lib/site";
-import { CheckIcon, PhoneIcon } from "./Icons";
+import { contact, eventTypes, socials } from "@/lib/site";
+import { PhoneIcon } from "./Icons";
 
 type Fields = { ime: string; telefon: string; vrsta: string; datum: string; grad: string; poruka: string };
 const empty: Fields = { ime: "", telefon: "", vrsta: "", datum: "", grad: "", poruka: "" };
@@ -19,7 +18,7 @@ function validate(f: Fields) {
 }
 
 const input =
-  "mt-2 block h-14 w-full border-2 border-transparent bg-paper px-4 text-base text-ink placeholder:text-ink/40 focus:border-gold focus:outline-none aria-[invalid=true]:border-[#e0664f]";
+  "mt-1.5 block h-12 w-full rounded border border-line bg-white px-3.5 text-base text-ink placeholder:text-mute/70 focus:border-ink focus:outline-none aria-[invalid=true]:border-[#b3261e]";
 
 function Field({
   id,
@@ -36,12 +35,12 @@ function Field({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={id} className="text-sm font-semibold text-paper/90">
+      <label htmlFor={id} className="text-[0.95rem] font-medium">
         {label}
       </label>
       {children}
       {error && (
-        <p id={`${id}-greska`} className="mt-1.5 text-sm text-[#f08a76]">
+        <p id={`${id}-greska`} className="mt-1 text-sm text-[#b3261e]">
           {error}
         </p>
       )}
@@ -85,151 +84,121 @@ export function Contact() {
     }
   };
 
-  const datum = f.datum
-    ? new Date(f.datum + "T12:00:00").toLocaleDateString("sr-Latn-RS", { day: "numeric", month: "long", year: "numeric" })
-    : "";
-
   return (
-    <section id="kontakt" className="relative isolate overflow-hidden bg-ink">
-      <Image
-        src="/media/img/sator-svetla.jpg"
-        alt=""
-        fill
-        sizes="100vw"
-        className="-z-10 object-cover opacity-45"
-      />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ink via-ink/70 to-ink" />
-
-      <div className="mx-auto grid max-w-[90rem] gap-14 px-5 py-20 md:grid-cols-12 md:gap-16 md:px-8 md:py-36">
-        <div className="md:col-span-6">
-          <h2 className="headline text-[clamp(2.9rem,6.5vw,6rem)]">
-            Proverite da li je <span className="text-gold">vaš datum slobodan.</span>
-          </h2>
-          <p className="mt-8 max-w-md text-lg leading-[1.75] text-paper/80">
-            Pošaljite datum i mesto — javljamo se sa informacijom o dostupnosti i ponudom.
+    <section id="kontakt" className="border-t border-line bg-white py-16 md:py-24">
+      <div className="wrap grid gap-12 md:grid-cols-[1fr_1.3fr] md:gap-16">
+        <div>
+          <h2 className="text-[clamp(1.9rem,3.6vw,2.75rem)]">Upit za nastup</h2>
+          <p className="mt-4 max-w-md text-mute">
+            Pošaljite datum i mesto proslave, a mi ćemo vam javiti da li smo slobodni i koliko košta
+            nastup. Najbrže je telefonom.
           </p>
-          <a href={contact.phoneHref} className="group mt-10 inline-flex items-center gap-5">
-            <span className="grid h-14 w-14 place-items-center bg-gold text-ink">
-              <PhoneIcon width={24} height={24} />
-            </span>
-            <span>
-              <span className="block text-sm text-paper/70">Ili pozovite direktno</span>
-              <span className="headline block text-4xl tabular-nums transition-colors group-hover:text-gold md:text-5xl">
-                {contact.phoneDisplay}
-              </span>
-            </span>
+          <a
+            href={contact.phoneHref}
+            className="mt-8 inline-flex items-center gap-3 text-3xl font-bold tabular-nums hover:text-gold-dark"
+          >
+            <PhoneIcon width={26} height={26} />
+            {contact.phoneDisplay}
           </a>
+          <p className="mt-2 text-mute">Booking: {contact.leader}</p>
+          <p className="mt-6">
+            <a className="link" href={socials.instagram.href} target="_blank" rel="noopener noreferrer">
+              Pišite nam na Instagramu
+            </a>
+          </p>
         </div>
 
-        <div className="md:col-span-6">
-          {status === "sent" ? (
-            <div role="status" aria-live="polite" className="bg-ink-2/90 p-6 md:p-10">
-              <span className="grid h-14 w-14 place-items-center bg-gold text-ink">
-                <CheckIcon width={26} height={26} />
-              </span>
-              <h3 className="headline mt-6 text-5xl">Hvala, {f.ime.split(" ")[0]}!</h3>
-              <p className="mt-4 text-lg leading-relaxed text-paper/85">
-                Upit za {datum} ({f.vrsta.toLowerCase()}, {f.grad}) je poslat. Javićemo vam se na{" "}
-                <strong className="text-paper">{f.telefon}</strong>.
-              </p>
-              <p className="mt-4 text-sm text-paper/60">
-                Upit ne predstavlja potvrdu rezervacije — termin se potvrđuje dogovorom sa orkestrom.
-              </p>
-              <button
-                type="button"
-                onClick={() => {
-                  setF(empty);
-                  setStatus("idle");
-                }}
-                className="btn btn-line mt-8"
-              >
-                Novi upit
-              </button>
-            </div>
-          ) : (
-            <form noValidate onSubmit={onSubmit} aria-label="Provera datuma" className="grid gap-x-5 gap-y-7 sm:grid-cols-2">
-              <Field id="ime" label="Ime i prezime" error={errors.ime} className="sm:col-span-2">
-                <input id="ime" autoComplete="name" value={f.ime} onChange={(e) => set("ime")(e.target.value)} className={input} {...err("ime")} />
-              </Field>
-              <Field id="telefon" label="Telefon" error={errors.telefon}>
-                <input
-                  id="telefon"
-                  type="tel"
-                  inputMode="tel"
-                  autoComplete="tel"
-                  placeholder="06x xxx xxxx"
-                  value={f.telefon}
-                  onChange={(e) => set("telefon")(e.target.value)}
-                  className={input}
-                  {...err("telefon")}
-                />
-              </Field>
-              <Field id="vrsta" label="Vrsta proslave" error={errors.vrsta}>
-                <select
-                  id="vrsta"
-                  value={f.vrsta}
-                  onChange={(e) => set("vrsta")(e.target.value)}
-                  className={`${input} appearance-none bg-[url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%230c0b09' stroke-width='2.5'><path d='m6 9 6 6 6-6'/></svg>")] bg-[length:14px] bg-[right_1rem_center] bg-no-repeat pr-10 ${f.vrsta ? "" : "text-ink/45"}`}
-                  {...err("vrsta")}
-                >
-                  <option value="" disabled>
-                    Izaberite…
+        {status === "sent" ? (
+          <div role="status" aria-live="polite" className="rounded border border-line bg-paper p-6 md:p-8">
+            <h3 className="text-2xl">Hvala, upit je poslat.</h3>
+            <p className="mt-3 text-mute">
+              Javićemo vam se na broj <strong className="text-ink">{f.telefon}</strong>. Upit ne
+              predstavlja potvrdu rezervacije — termin se potvrđuje dogovorom.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setF(empty);
+                setStatus("idle");
+              }}
+              className="link mt-6"
+            >
+              Pošaljite novi upit
+            </button>
+          </div>
+        ) : (
+          <form noValidate onSubmit={onSubmit} aria-label="Upit za nastup" className="grid gap-5 sm:grid-cols-2">
+            <Field id="ime" label="Ime i prezime" error={errors.ime}>
+              <input id="ime" autoComplete="name" value={f.ime} onChange={(e) => set("ime")(e.target.value)} className={input} {...err("ime")} />
+            </Field>
+            <Field id="telefon" label="Telefon" error={errors.telefon}>
+              <input
+                id="telefon"
+                type="tel"
+                inputMode="tel"
+                autoComplete="tel"
+                value={f.telefon}
+                onChange={(e) => set("telefon")(e.target.value)}
+                className={input}
+                {...err("telefon")}
+              />
+            </Field>
+            <Field id="vrsta" label="Vrsta proslave" error={errors.vrsta}>
+              <select id="vrsta" value={f.vrsta} onChange={(e) => set("vrsta")(e.target.value)} className={input} {...err("vrsta")}>
+                <option value="" disabled>
+                  Izaberite
+                </option>
+                {eventTypes.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
                   </option>
-                  {eventTypes.map((t) => (
-                    <option key={t} value={t} className="text-ink">
-                      {t}
-                    </option>
-                  ))}
-                </select>
-              </Field>
-              <Field id="datum" label="Datum" error={errors.datum}>
-                <input
-                  id="datum"
-                  type="date"
-                  min={today}
-                  value={f.datum}
-                  onChange={(e) => set("datum")(e.target.value)}
-                  className={`${input} [color-scheme:light] ${f.datum ? "" : "text-ink/45"}`}
-                  {...err("datum")}
-                />
-              </Field>
-              <Field id="grad" label="Grad / mesto" error={errors.grad}>
-                <input
-                  id="grad"
-                  autoComplete="address-level2"
-                  placeholder="npr. Beograd"
-                  value={f.grad}
-                  onChange={(e) => set("grad")(e.target.value)}
-                  className={input}
-                  {...err("grad")}
-                />
-              </Field>
-              <Field id="poruka" label="Poruka (opciono)" className="sm:col-span-2">
-                <textarea
-                  id="poruka"
-                  rows={3}
-                  placeholder="Sala, broj gostiju, posebne želje…"
-                  value={f.poruka}
-                  onChange={(e) => set("poruka")(e.target.value)}
-                  className={`${input} h-auto resize-none py-3`}
-                />
-              </Field>
-              <div className="pt-2 sm:col-span-2">
-                <button type="submit" disabled={status === "sending"} className="btn btn-gold min-h-[3.75rem] w-full text-lg disabled:opacity-70">
-                  {status === "sending" ? "Šaljemo…" : "Proveri datum"}
-                </button>
-                {status === "error" && (
-                  <p role="alert" className="mt-3 text-sm text-[#f08a76]">
-                    Slanje nije uspelo. Pozovite nas na {contact.phoneDisplay}.
-                  </p>
-                )}
-                <p className="mt-4 text-sm text-paper/60">
-                  Upit ne predstavlja potvrdu rezervacije.
+                ))}
+              </select>
+            </Field>
+            <Field id="datum" label="Datum" error={errors.datum}>
+              <input
+                id="datum"
+                type="date"
+                min={today}
+                value={f.datum}
+                onChange={(e) => set("datum")(e.target.value)}
+                className={input}
+                {...err("datum")}
+              />
+            </Field>
+            <Field id="grad" label="Grad / mesto" error={errors.grad} className="sm:col-span-2">
+              <input
+                id="grad"
+                autoComplete="address-level2"
+                value={f.grad}
+                onChange={(e) => set("grad")(e.target.value)}
+                className={input}
+                {...err("grad")}
+              />
+            </Field>
+            <Field id="poruka" label="Poruka (nije obavezno)" className="sm:col-span-2">
+              <textarea
+                id="poruka"
+                rows={3}
+                placeholder="Sala, broj gostiju, satnica…"
+                value={f.poruka}
+                onChange={(e) => set("poruka")(e.target.value)}
+                className={`${input} h-auto py-2.5`}
+              />
+            </Field>
+            <div className="sm:col-span-2">
+              <button type="submit" disabled={status === "sending"} className="btn btn-dark w-full sm:w-auto disabled:opacity-60">
+                {status === "sending" ? "Šaljemo…" : "Pošaljite upit"}
+              </button>
+              {status === "error" && (
+                <p role="alert" className="mt-3 text-sm text-[#b3261e]">
+                  Slanje nije uspelo. Pozovite nas na {contact.phoneDisplay}.
                 </p>
-              </div>
-            </form>
-          )}
-        </div>
+              )}
+              <p className="mt-3 text-sm text-mute">Upit ne predstavlja potvrdu rezervacije.</p>
+            </div>
+          </form>
+        )}
       </div>
     </section>
   );
