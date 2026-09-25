@@ -1,19 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { EB_Garamond, Manrope } from "next/font/google";
+import { Archivo } from "next/font/google";
 import { SITE_URL, contact, socials } from "@/lib/site";
 import "./globals.css";
 
-// EB Garamond: čisto iscrtani č/ć/š/ž/đ (Cormorant ima pomerene kvačice).
-const garamond = EB_Garamond({
-  variable: "--font-garamond",
+// Jedan varijabilni font (širina + debljina) za naslove i tekst; latin-ext za č/ć/š/ž/đ.
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin", "latin-ext"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin", "latin-ext"],
+  axes: ["wdth"],
   display: "swap",
 });
 
@@ -87,7 +81,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="sr-Latn" className={`${garamond.variable} ${manrope.variable}`}>
+    <html lang="sr-Latn" className={archivo.variable}>
       <body className="min-h-dvh overflow-x-clip">
         {children}
         <script

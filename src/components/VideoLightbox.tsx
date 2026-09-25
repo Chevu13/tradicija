@@ -103,7 +103,7 @@ export function VideoLightbox({ items, index, onChange }: Props) {
           transition={{ duration: 0.4 }}
         >
           <div className="flex items-center justify-between px-4 pt-[max(1rem,env(safe-area-inset-top))] md:px-8 md:pt-6">
-            <p className="eyebrow text-[0.62rem] text-sand">
+            <p className="label text-[0.62rem] text-mute">
               {String(index! + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}
             </p>
             <button
@@ -111,7 +111,7 @@ export function VideoLightbox({ items, index, onChange }: Props) {
               type="button"
               onClick={() => onChange(null)}
               aria-label="Zatvori"
-              className="grid h-12 w-12 place-items-center rounded-full border border-ivory/20 text-ivory transition-colors hover:border-gold hover:text-gold"
+              className="grid h-12 w-12 place-items-center rounded-full border border-paper/20 text-paper transition-colors hover:border-gold hover:text-gold"
             >
               <CloseIcon />
             </button>
@@ -122,7 +122,7 @@ export function VideoLightbox({ items, index, onChange }: Props) {
               type="button"
               onClick={() => go(-1)}
               aria-label="Prethodni snimak"
-              className="absolute left-6 top-1/2 hidden h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-ivory/20 text-ivory transition-colors hover:border-gold hover:text-gold md:grid"
+              className="absolute left-6 top-1/2 hidden h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-paper/20 text-paper transition-colors hover:border-gold hover:text-gold md:grid"
             >
               <ArrowLeft />
             </button>
@@ -167,7 +167,7 @@ export function VideoLightbox({ items, index, onChange }: Props) {
                     <PlayIcon width={24} height={24} />
                   </button>
                 )}
-                <div className="absolute inset-x-0 bottom-0 h-[3px] bg-ivory/15">
+                <div className="absolute inset-x-0 bottom-0 h-[3px] bg-paper/15">
                   <div
                     className="h-full origin-left bg-gold transition-transform duration-200 ease-linear"
                     style={{ transform: `scaleX(${progress})` }}
@@ -178,7 +178,7 @@ export function VideoLightbox({ items, index, onChange }: Props) {
                     type="button"
                     onClick={togglePlay}
                     aria-label={paused ? "Pusti" : "Pauziraj"}
-                    className="grid h-11 w-11 place-items-center rounded-full bg-ink/50 text-ivory backdrop-blur"
+                    className="grid h-11 w-11 place-items-center rounded-full bg-ink/50 text-paper backdrop-blur"
                   >
                     {paused ? <PlayIcon width={14} height={14} /> : <PauseIcon width={14} height={14} />}
                   </button>
@@ -186,7 +186,7 @@ export function VideoLightbox({ items, index, onChange }: Props) {
                     type="button"
                     onClick={toggleMute}
                     aria-label={muted ? "Uključi zvuk" : "Isključi zvuk"}
-                    className="grid h-11 w-11 place-items-center rounded-full bg-ink/50 text-ivory backdrop-blur"
+                    className="grid h-11 w-11 place-items-center rounded-full bg-ink/50 text-paper backdrop-blur"
                   >
                     {muted ? <VolumeOff width={18} height={18} /> : <VolumeOn width={18} height={18} />}
                   </button>
@@ -198,7 +198,7 @@ export function VideoLightbox({ items, index, onChange }: Props) {
               type="button"
               onClick={() => go(1)}
               aria-label="Sledeći snimak"
-              className="absolute right-6 top-1/2 hidden h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-ivory/20 text-ivory transition-colors hover:border-gold hover:text-gold md:grid"
+              className="absolute right-6 top-1/2 hidden h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-paper/20 text-paper transition-colors hover:border-gold hover:text-gold md:grid"
             >
               <ArrowRight />
             </button>
@@ -206,8 +206,8 @@ export function VideoLightbox({ items, index, onChange }: Props) {
 
           <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] md:flex-row md:items-end md:justify-between md:pb-8">
             <div>
-              <p className="eyebrow text-[0.6rem] text-gold">{item.label}</p>
-              <p className="display mt-1 text-3xl">{item.title}</p>
+              <p className="label text-[0.6rem] text-gold">{item.label}</p>
+              <p className="headline mt-1 text-3xl">{item.title}</p>
             </div>
             <div className="flex items-center gap-3">
               <a
@@ -215,23 +215,23 @@ export function VideoLightbox({ items, index, onChange }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Pogledajte na Instagramu"
-                className="grid h-[3.25rem] w-[3.25rem] shrink-0 place-items-center border border-ivory/20 text-ivory transition-colors hover:border-gold hover:text-gold"
+                className="grid h-[3.25rem] w-[3.25rem] shrink-0 place-items-center border border-paper/20 text-paper transition-colors hover:border-gold hover:text-gold"
               >
                 <InstagramIcon width={18} height={18} />
               </a>
               <a
-                href="#upit"
+                href="#kontakt"
                 onClick={(e) => {
                   e.preventDefault();
                   onChange(null);
                   setTimeout(
-                    () => document.getElementById("upit")?.scrollIntoView({ behavior: "smooth" }),
+                    () => document.getElementById("kontakt")?.scrollIntoView({ behavior: "smooth" }),
                     420,
                   );
                 }}
                 className="btn btn-gold flex-1 md:flex-none"
               >
-                Želim ovakvo veselje
+                Proveri datum
               </a>
             </div>
           </div>

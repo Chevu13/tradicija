@@ -14,7 +14,7 @@ npm run build    # produkcijski build (Vercel-ready)
 | --- | --- |
 | Svi podaci (telefon, mreže, snimci) | `src/lib/site.ts` |
 | Sekcije stranice | `src/components/*` |
-| Upit za nastup (API) | `src/app/api/upit/route.ts` |
+| Forma „Proveri datum“ (API) | `src/app/api/upit/route.ts` |
 | SEO: metadata, OpenGraph, JSON-LD | `src/app/layout.tsx`, `sitemap.ts`, `robots.ts` |
 | Fotografije i video | `public/media/` |
 
@@ -35,4 +35,4 @@ NEXT_PUBLIC_SITE_URL=https://pravi-domen.rs
 - „Srbija i region“ (izvedeno iz snimka „Svatovi u Tuzli“) i postava „harmonika, saksofon, klavijature“ (vidljivo na snimcima).
 - Lista vrsta proslava u formi (`eventTypes` u `site.ts`).
 - Svi snimci i fotografije su sa zvaničnih profila orkestra (Instagram, YouTube) — za finalnu verziju poželjno dobiti originalne fajlove u višoj rezoluciji.
-- Utisci klijenata: nisu pronađeni javno, pa sekcija nije pravljena. Lako se dodaje kad orkestar dostavi prave utiske.
+- Utisci klijenata nisu pronađeni javno, pa sekcija nije pravljena.
